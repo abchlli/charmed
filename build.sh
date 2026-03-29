@@ -24,7 +24,6 @@ git
 bison
 flex
 m4
-pkg-config
 gcc
 gdb
 make
@@ -57,7 +56,6 @@ openssh
 openssl
 ca-certificates
 wget
-trurl
 curl
 jq
 tzdata
@@ -65,9 +63,9 @@ shadow
 sudo
 tmux
 skim
-inotify-tools
 gettext
 readline
+pkg-config
 ncurses
 ncurses-devel
 docker
@@ -103,8 +101,11 @@ cd ./void-mklive
     tar -xzf pkg-rootfs.tar.gz -C rootfs-tmp
     cp -r ../root/* rootfs-tmp/
     
-    # Installing Charm tools
     export GOBIN=$(pwd)/rootfs-tmp/usr/bin
+    go install golang.org/x/pkgsite/cmd/pkgsite@latest
+    go install golang.org/x/tools/cmd/goimports@latest
+    
+    # Installing Charm tools
     go install github.com/charmbracelet/crush@latest
     go install github.com/charmbracelet/glow/v2@latest
     go install github.com/charmbracelet/gum@latest
