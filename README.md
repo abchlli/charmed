@@ -45,25 +45,8 @@ The system uses **vi** and **readline** style bindings everywhere.
 I recommend you use an editor with similar bindings.  
 [Vim](https://vimhelp.org), [NeoVim](https://neovim.io/doc/user), [Vis](github.com/martanne/vis/wiki), ([Doom](https://github.com/doomemacs/doomemacs/blob/master/docs/index.org)) [Emacs](https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html) (evil, no X), [VSCode](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) and [Zed](https://zed.dev/docs/vim) come to mind!
 
-Don't forget to set it as default; if you use an external one, I recommend setting it to [nvi](https://repo.or.cz/nvi.git).
-```sh
-# NeoVim
-vpm install neovim
-echo 'export EDITOR="nvim" VISUAL="$EDITOR"' >> ~/.bash_profile
-```
-```sh
-# Vim (with clipboard support)
-vpm install vim-x11
-echo 'export EDITOR="vim" VISUAL="$EDITOR"' >> ~/.bash_profile
-```
-```sh
-# Nvi (reimplementation of the classic vi)
-vpm install nvi # pre-installed installed as fallback
-echo 'export EDITOR="vi" VISUAL="$EDITOR"' >> ~/.bash_profile
-```
-
 > [!NOTE]
-> Users are expected to be technical.  
+> Users are expected to be pretty technical.  
 > It is unlikely you're gonna have a good time with this if you aren't.  
 
 # Vision
@@ -154,6 +137,24 @@ echo -e "nameserver 1.1.1.1\nnameserver 1.0.0.1" > /etc/resolv.conf
 su albi
 ```
 
+This is a good time to install, configure and set your favorite editor.  
+Don't forget to set it as default; if you use an external one, consider setting this to [nvi](https://repo.or.cz/nvi.git).
+```sh
+# NeoVim
+vpm install neovim
+echo 'export EDITOR="nvim" VISUAL="$EDITOR"' >> ~/.bash_profile
+```
+```sh
+# Vim (with clipboard support)
+vpm install vim-x11
+echo 'export EDITOR="vim" VISUAL="$EDITOR"' >> ~/.bash_profile
+```
+```sh
+# Nvi (reimplementation of the classic vi)
+vpm install nvi # pre-installed installed as fallback
+echo 'export EDITOR="vi" VISUAL="$EDITOR"' >> ~/.bash_profile
+```
+
 # Bindings
 Because of how familiar it feels, bash isn't in vi-mode by default.
 
@@ -163,6 +164,7 @@ Because of how familiar it feels, bash isn't in vi-mode by default.
 | `Ctrl + e` | Move cursor to end of line |
 | `Ctrl + w` | Delete word backward |
 | `Ctrl + r` | Reverse search |
+| `Ctrl + q` | Edit command line in $EDITOR |
 
 ```sh
 # Try to switch to bash's vi-mode
@@ -196,12 +198,15 @@ It should feel like you're rolling the fingers of your left hand.
 Docker is installed and disabled by default.  
 You can enable it via the init system.
 ```sh
+su
 # Enable it for future sessions
 ln -s /etc/sv/containerd /var/service
 ln -s /etc/sv/docker /var/service
-# Start it for this one
+# Start it now
 sv start containerd
 sv start docker
+# Add your user to the docker group
+usermod -aG docker albi
 ```
 
 # Try on Linux
