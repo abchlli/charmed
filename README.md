@@ -4,7 +4,7 @@
 **A coherent Linux rootfs for anyone who just needs to get the job done.**
 * Glamorous following Charm's aesthetic, includes a selection of their tools.
 * Minimal being based on the latest Void Linux glibc rootfs, it has very little bloat (see later).
-* Modern and coherent dev environment, uses vi and readline style bindings everywhere, tries to be as comfy as possible.
+* Modern, coherent and comfy, uses vi and readline style bindings everywhere.
 
 # Toolset
 * Gawk ([docs](https://www.gnu.org/software/gawk/manual), [source](https://cgit.git.savannah.gnu.org/cgit/gawk.git))
